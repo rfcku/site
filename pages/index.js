@@ -1,5 +1,4 @@
 import useSwr from "swr";
-import Script from "next/script";
 import { useSession } from "next-auth/react";
 import { Grid, Card, Text, Container, Row, Col, Link } from "@nextui-org/react";
 import { AiFillGithub } from "react-icons/ai";
@@ -9,36 +8,21 @@ import { AiFillInstagram } from "react-icons/ai";
 const API_URL = "http://localhost:4000";
 import Animation from "../components/animation";
 
+const UID = "6b857a0d-6e25-4863-9ef4-c5aa23dcb45c";
+
 export const fetcher = (url) => fetch(`${url}`).then((res) => res.json());
 
 export default function Home() {
   const { data: session } = useSession();
   const { data, error } = useSwr(
-    "https://api.countapi.xyz/hit/6b857a0d-6e25-4863-9ef4-c5aa23dcb45c",
+    `https://api.countapi.xyz/hit/${UID}`,
     fetcher
   );
-  console.log("data", data, error);
   // if (error) return <div></div>
   // if (!data) return <div>Loading...</div>;
 
   return (
     <Grid.Container>
-      <div className="container">
-        {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-GYZJJ8LCHY"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-GYZJJ8LCHY');
-          `}
-        </Script>
-      </div>
       <Row gap={2}>
         <Grid.Container
           xs={12}
@@ -49,6 +33,18 @@ export default function Home() {
           direction="column"
         >
           <Grid>
+            <Grid align="center" justify="center">
+              <Text
+                h1
+                size={60}
+                css={{
+                  textGradient: "45deg, $blue600 -20%, $pink600 100%",
+                }}
+                weight="bold"
+              >
+                @rfcku
+              </Text>
+            </Grid>
             <Grid.Container
               direction="row"
               alignContent="center"
@@ -58,32 +54,40 @@ export default function Home() {
             >
               <Grid>
                 <Col>
-                  <Link href="https://github.com/rfcku" target={"_blank"}>
-                    <AiFillGithub size="3em" />
-                  </Link>
-                </Col>
-              </Grid>
-              <Grid>
-                <Col>
-                  <Link href="https://twitter.com/rfcku" target={"_blank"}>
-                    <AiFillTwitterCircle size="3em" />
+                  <Link
+                    color="secondary"
+                    href="https://github.com/rfcku"
+                    target={"_blank"}
+                  >
+                    <AiFillGithub size="2em" />
                   </Link>
                 </Col>
               </Grid>
               <Grid>
                 <Col>
                   <Link
+                    color="secondary"
+                    href="https://twitter.com/rfcku"
+                    target={"_blank"}
+                  >
+                    <AiFillTwitterCircle size="2em" />
+                  </Link>
+                </Col>
+              </Grid>
+              <Grid>
+                <Col>
+                  <Link
+                    color="secondary"
                     href="https://www.instagram.com/rfcku/"
                     target={"_blank"}
                   >
-                    <AiFillInstagram size="3em" />
+                    <AiFillInstagram size="2em" />
                   </Link>
                 </Col>
               </Grid>
             </Grid.Container>
           </Grid>
           <Grid align="center" justify="center">
-            <Text h1>@rfcku</Text>
             <small>visits: {data && data.value}</small>
           </Grid>
         </Grid.Container>

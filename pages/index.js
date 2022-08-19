@@ -1,7 +1,7 @@
 import useSwr from "swr";
 import Script from "next/script";
 import { useSession } from "next-auth/react";
-import { Grid, Card, Text, Container, Row, Col } from "@nextui-org/react";
+import { Grid, Card, Text, Container, Row, Col, Link } from "@nextui-org/react";
 import { AiFillGithub } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
@@ -58,17 +58,26 @@ export default function Home() {
             >
               <Grid>
                 <Col>
-                  <AiFillGithub size="3em" />
+                  <Link href="https://github.com/rfcku" target={"_blank"}>
+                    <AiFillGithub size="3em" />
+                  </Link>
                 </Col>
               </Grid>
               <Grid>
                 <Col>
-                  <AiFillTwitterCircle size="3em" />
+                  <Link href="https://twitter.com/rfcku" target={"_blank"}>
+                    <AiFillTwitterCircle size="3em" />
+                  </Link>
                 </Col>
               </Grid>
               <Grid>
                 <Col>
-                  <AiFillInstagram size="3em" />
+                  <Link
+                    href="https://www.instagram.com/rfcku/"
+                    target={"_blank"}
+                  >
+                    <AiFillInstagram size="3em" />
+                  </Link>
                 </Col>
               </Grid>
             </Grid.Container>

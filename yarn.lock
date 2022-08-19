@@ -484,40 +484,6 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@gg/ui-kit@^0.0.1":
-  version "1.1.0"
-  resolved "https://git.g-global.cloud/api/v4/projects/275/packages/npm/@gg/ui-kit/-/@gg/ui-kit-1.1.0.tgz#83912de4ed7110cf87e980741c78ff273708bafe"
-  integrity sha1-g5Et5O1xEM+H6YB0HHj/JzcIuv4=
-  dependencies:
-    "@emotion/react" "^11.9.3"
-    "@emotion/styled" "^11.9.3"
-    "@mui/icons-material" "^5.8.4"
-    "@mui/material" "^5.9.2"
-    "@nextui-org/react" "^1.0.0-beta.9"
-    "@semantic-release/git" "^10.0.1"
-    "@semantic-release/gitlab" "^9.4.1"
-    "@semantic-release/npm" "^9.0.1"
-    "@types/jest" "^28.1.6"
-    dayjs "^1.11.4"
-    eslint "8.21.0"
-    eslint-config-next "12.2.4"
-    formik "^2.2.9"
-    jest "^28.1.3"
-    next-auth "^4.10.3"
-    next-themes "^0.2.0"
-    prettier "^2.7.1"
-    react "18.2.0"
-    react-alert "^7.0.3"
-    react-alert-template-basic "^1.0.2"
-    react-dom "18.2.0"
-    react-icons "^4.4.0"
-    semantic-release "^19.0.3"
-    swr "^1.3.0"
-    ts-jest "^28.0.7"
-    tslint "^6.1.3"
-    tslint-config-prettier "^1.18.0"
-    typescript "^4.7.4"
-
 "@humanwhocodes/config-array@^0.10.4":
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.10.4.tgz#01e7366e57d2ad104feea63e72248f22015c520c"
@@ -5646,7 +5612,7 @@ next-themes@^0.2.0:
   resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.2.0.tgz#fdc507f61e95b3ae513dee8d4783bcec8c02e3a3"
   integrity sha512-myhpDL4vadBD9YDSHiewqvzorGzB03N84e+3LxCwHRlM/hiBOaW+UsKsQojQAzC7fdcJA0l2ppveXcYaVV+hxQ==
 
-next@12.2.5:
+next@^12.2.5:
   version "12.2.5"
   resolved "https://registry.yarnpkg.com/next/-/next-12.2.5.tgz#14fb5975e8841fad09553b8ef41fe1393602b717"
   integrity sha512-tBdjqX5XC/oFs/6gxrZhjmiq90YWizUYU6qOWAfat7zJwrwapJ+BYgX2PmiacunXMaRpeVT4vz5MSPSLgNkrpA==

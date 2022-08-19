@@ -1,4 +1,5 @@
 import useSwr from "swr";
+import Script from "next/script";
 import { useSession } from "next-auth/react";
 import { Grid, Card, Text, Container, Row, Col } from "@nextui-org/react";
 import { AiFillGithub } from "react-icons/ai";
@@ -14,8 +15,25 @@ export default function Home() {
   // const { data, error } = useSwr("/all", fetcher);
   // if (error) return <div></div>
   // if (!data) return <div>Loading...</div>;
+
   return (
     <Grid.Container>
+      <div className="container">
+        {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GYZJJ8LCHY"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-GYZJJ8LCHY');
+          `}
+        </Script>
+      </div>
       <Row gap={2}>
         <Grid.Container
           xs={12}

@@ -1,7 +1,34 @@
-import '../styles/globals.css'
+import { NextUIProvider } from "@nextui-org/react";
+import { SessionProvider } from "next-auth/react";
+import { transitions, positions, Provider as AlertProvider } from "react-alert";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import Layout from "../providers/layout.provider";
+import ThemeProvider from "../providers/theme.provider";
+import AlertTemplate from "../providers/alert.provider";
+
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.BOTTOM_CENTER,
+  timeout: 5000,
+  offset: "30px",
+  // you can also just use 'scale'
+  transition: transitions.SCALE,
+};
+
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  return (
+    <SessionProvider session={session}>
+      <ThemeProvider>
+        <NextUIProvider>
+          <AlertProvider template={AlertTemplate} {...options}>
+            <Layout session={session} {...pageProps}>
+              <Component {...pageProps} />
+            </Layout>
+          </AlertProvider>
+        </NextUIProvider>
+      </ThemeProvider>
+    </SessionProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

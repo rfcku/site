@@ -7,12 +7,17 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 const API_URL = "http://localhost:4000";
-export const fetcher = (url) =>
-  fetch(`${API_URL}${url}`).then((res) => res.json());
+import Animation from "../components/animation";
+
+export const fetcher = (url) => fetch(`${url}`).then((res) => res.json());
 
 export default function Home() {
   const { data: session } = useSession();
-  // const { data, error } = useSwr("/all", fetcher);
+  const { data, error } = useSwr(
+    "https://api.countapi.xyz/hit/6b857a0d-6e25-4863-9ef4-c5aa23dcb45c",
+    fetcher
+  );
+  console.log("data", data, error);
   // if (error) return <div></div>
   // if (!data) return <div>Loading...</div>;
 
@@ -70,6 +75,7 @@ export default function Home() {
           </Grid>
           <Grid align="center" justify="center">
             <Text h1>@rfcku</Text>
+            <small>visits: {data && data.value}</small>
           </Grid>
         </Grid.Container>
       </Row>

@@ -1,10 +1,14 @@
 import { NextUIProvider } from "@nextui-org/react";
 import { SessionProvider } from "next-auth/react";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
+import { AppWrapper } from "../context/AppContext";
 
 import Layout from "../providers/layout.provider";
 import ThemeProvider from "../providers/theme.provider";
 import AlertTemplate from "../providers/alert.provider";
+
+import './index.scss'
+
 
 const options = {
   // you can also just use 'bottom center'
@@ -21,9 +25,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <ThemeProvider>
         <NextUIProvider>
           <AlertProvider template={AlertTemplate} {...options}>
-            <Layout session={session} {...pageProps}>
-              <Component {...pageProps} />
-            </Layout>
+            <AppWrapper>
+                <Layout session={session} {...pageProps}>
+                  <Component {...pageProps} />
+                </Layout>
+            </AppWrapper>
           </AlertProvider>
         </NextUIProvider>
       </ThemeProvider>

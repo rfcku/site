@@ -1,13 +1,14 @@
-import { Grid, Text } from "@nextui-org/react";
+import { Grid, Text, Link } from "@nextui-org/react";
 import Image from 'next/image'
 import ReactPlayer from 'react-player'
 import Social from './Social'
+import { AiOutlineCoffee } from "react-icons/ai";
 import useDex from '../hooks/useDex';
 import { library, gtFlg } from '../utils';
 
 const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:3000';
 
-export default function Base() {
+export default function Base({flag}) {
     
     const {
         promtSmbt,
@@ -18,7 +19,7 @@ export default function Base() {
     } = useDex()
     if (!cpt) return <>No Data</>
     return (
-        <section flag={gtFlg(122)}
+        <section flag={flag}
             >
             {
                 // window.cheat && (<button onClick={()=>cheat()}>Cheat</button>)
@@ -73,6 +74,25 @@ export default function Base() {
                     cpt.length >= 1 && (<div className="stats" onClick={() => promtSmbt() }>Captured: {cpt.length}/151</div>)
                 }
             </div>
+            <div style={{position: 'fixed', bottom: 25, right: 25}}>
+                <Link
+                    color="secondary"
+                    href="https://www.buymeacoffee.com/rfcku"
+                    target={"_blank"}
+                >
+                    <AiOutlineCoffee size="2em" />
+                </Link>
+            </div>
         </section>
     )
 }
+
+export async function getServerSideProps(context) {
+    
+    
+    return {
+      props: {
+        flag: gtFlg(122) 
+      }, // will be passed to the page component as props
+    }
+  }

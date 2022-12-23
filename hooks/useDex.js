@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import {useRouter} from 'next/router';
 import { useCookies } from "react-cookie";
 import { decrypt, iv }from '../utils/crypto'
-import { onlyUnique, gtFlg, library as lb } from '../utils';
+import { onlyUnique, gtFlg, library as lb, dcrtpFlg } from '../utils';
 import { useAppContext } from '../context/AppContext';
 
 
@@ -43,13 +43,19 @@ export default function useDex() {
             })
         }
     }
-
+    console.log('Flag', gtFlg(2))
     const sbmtFlg = (flag) => {
+        console.log('Submitting Flag', flag);
         try{
+            const flg = dcrtpFlg(flag)
+            console.log('Decripted flag', flg);
+
             flag = decrypt({
                 iv:iv,
                 content:flag
             }).split('-');
+            
+            console.log('Decripted flag 2', flag);
             if(flag.length >= 1){
                 cptPkm(parseInt( flag[0] ))
             }

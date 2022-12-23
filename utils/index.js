@@ -1,5 +1,5 @@
 import pokedexJson from "./pokedex.json"
-import { encrypt, decrypt }from '../utils/crypto'
+import { encrypt, decrypt, iv }from '../utils/crypto'
 export const onlyUnique = (value, index, self) => {
     return self.indexOf(value) === index;
 }
@@ -14,4 +14,11 @@ export const library = pokedexJson.map( ( o , i ) => {
 export const gtFlg = (id) => {
     const fl = encrypt( `${ library[id-1].id.toString()}-${library[id-1].name.english}` )
     return fl.content    
+}
+
+export const dcrtpFlg = (content) => {
+    return decrypt({
+        iv:iv,
+        content
+    }).split('-');
 }

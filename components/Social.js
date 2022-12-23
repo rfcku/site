@@ -1,7 +1,5 @@
 import { Grid, Col, Link } from "@nextui-org/react";
-import { AiFillGithub } from "react-icons/ai";
-import { AiFillTwitterCircle } from "react-icons/ai";
-import { AiFillInstagram } from "react-icons/ai";
+import { AiFillTwitterCircle, AiFillGithub,  AiFillInstagram } from "react-icons/ai";
 
 export default function Social({handleClick, strt }) {
     

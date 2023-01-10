@@ -1,16 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import {useRouter} from 'next/router';
 import { useCookies } from "react-cookie";
-import { decrypt, iv }from '../utils/crypto'
 import { onlyUnique, gtFlg, library as lb, dcrtpFlg } from '../utils';
 import { useAppContext } from '../context/AppContext';
-
+import { useAlert } from 'react-alert';
 
 export default function useDex() {
     
     const  { pathname:location } = useRouter()
     
     const { state: { cpt, status }, dispatch } = useAppContext()
+
+    const alert = useAlert();
 
     const params = new URLSearchParams(location.search);
                 
@@ -34,6 +35,11 @@ export default function useDex() {
             index = getRandomArbitrary()
         }
         if(!cpt.includes( index )){
+            alert.show(`You caught ${lb[index-1].name.english}!`, {
+                message: `You can now view ${lb[index-1].name.english} in your Pokedex`,
+                type: 'success',
+                timeout: 5000,
+            });
             dispatch({
                 type: "cpt",
                 value: [
@@ -43,25 +49,24 @@ export default function useDex() {
             })
         }
     }
-    console.log('Flag', gtFlg(2))
+
     const sbmtFlg = (flag) => {
         console.log('Submitting Flag', flag);
         try{
             const flg = dcrtpFlg(flag)
-            console.log('Decripted flag', flg);
-
-            flag = decrypt({
-                iv:iv,
-                content:flag
-            }).split('-');
-            
-            console.log('Decripted flag 2', flag);
-            if(flag.length >= 1){
-                cptPkm(parseInt( flag[0] ))
+            if(flg.length >= 1 && flg[0] !== ''){
+                return cptPkm( parseInt( flg[0] ) )
+            } else {
+                throw new Error('Invalid Flag');
             }
 
         }catch(err){
-            console.log('Decrypting Error', err);
+            alert.show(`Invalid Flag`,{
+                message: `Please try again`,
+                type: 'error',
+                timeout: 5000,
+            });
+            console.log('Decrypting Error', err.message);
         }
     }
 
@@ -72,7 +77,10 @@ export default function useDex() {
             cptPkm(99)
         }
         if(text === 'random'){
-            cptPkm(37)
+            cptPkm(32)
+        }
+        if (text === 'admin') {
+            cptPkm()
         }
         else{
             if(text !== ""){

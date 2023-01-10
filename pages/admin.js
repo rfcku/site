@@ -14,6 +14,9 @@ const Profile = ({ flag }) => {
     <section flag={gtFlg(66)}>
         <Grid.Container gap={2} direction="column" alignContent="center" justify="center" alignItems="center">
             <Grid>
+              <Text h1>Admin Login</Text>
+            </Grid>
+            <Grid>
                 <Input placeholder="username" onChange={({target:{value:u}}) => setInput({...input, u})} />
             </Grid>
             <Grid>

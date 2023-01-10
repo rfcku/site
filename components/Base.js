@@ -5,6 +5,8 @@ import { AiOutlineCoffee } from "react-icons/ai";
 import useDex from '../hooks/useDex';
 import { gtFlg } from '../utils';
 import Header from './Header';
+import {GrGallery} from 'react-icons/gr'
+import {MdOutlineMonochromePhotos} from 'react-icons/md'
 const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:3000';
 
 export default function Base({flag}) {
@@ -52,18 +54,13 @@ export default function Base({flag}) {
                     </Grid>
                     <Social strt={strt} handleClick={cptPkm} />
                     <Grid align="center" justify="center">
-                        <Text
-
-                            h1
-                            size={14}
-                            css={{
-                                textGradient: "45deg, $blue600 -20%, $pink600 100%",
-                            }}
-                            weight="bold"
-                            onClick={() => window.open('https://opensea.io/collection/rfcku-collection')}
-                        >
-                            ntf's
-                        </Text>
+                    <Link
+                                color="secondary"
+                                href="/gallery"
+                                target={"_blank"}
+                            >
+                                gallery
+                            </Link>
                     </Grid>
                 </div>
                 {

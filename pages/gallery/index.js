@@ -20,7 +20,7 @@ const photos = images.map((image) => ({
     rows: 3,
     cols: 3,
     title: "Image",
-    link: "https://opensea.io/collection/rfcku-collection",
+    link: "https://opensea.io/collection/rfcku",
 }));
 
 export default function Home() {
